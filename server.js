@@ -29,4 +29,7 @@ const port = process.env.PORT || 3001;
 app.listen(port, function () {
   console.log(`Express app running on port ${port}`);
 });
-r;
+
+app.get("/dynamo", async (req, res) => {
+  const dynCall = await dynamodb();
+});
