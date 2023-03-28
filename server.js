@@ -30,6 +30,6 @@ app.listen(port, function () {
   console.log(`Express app running on port ${port}`);
 });
 
-app.get("/dynamo", async (req, res) => {
-  const dynCall = await dynamodb();
-});
+// app.get("/dynamo", async (req, res) => {
+//   const dynCall = await dynamodb();
+// });
