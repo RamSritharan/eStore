@@ -16,6 +16,7 @@ import { DynamoDB } from "@aws-sdk/client-dynamodb";
 
 const {
   DynamoDBClient,
+  DynamoDB,
   ListTablesCommand,
 } = require("@aws-sdk/client-dynamodb");
 
@@ -29,5 +30,18 @@ const {
     console.error(err);
   }
 })();
+
+const client = new DynamoDB({ region: "us-east-1" });
+client.middlewareStack.add(
+  (next, context) => (args) => {
+    args.request.headers["Custom-Header"] = "value";
+    console.log("\n -- printed from inside middleware -- \n");
+    return next(args);
+  },
+  {
+    step: "build",
+  }
+);
+await client.listTables({});
 
 module.exports = { client, command };
