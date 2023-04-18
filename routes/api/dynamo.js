@@ -9,4 +9,3 @@ router.get("/list", dynCtrl.productItem);
 // router.get("/list", prodCtrl.run);
 
 module.exports = router;
-fdsfssf;
