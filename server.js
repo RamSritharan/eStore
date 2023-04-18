@@ -11,7 +11,9 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get("/list", require("./routes/api/dynamo"));
+app.get("/list", require("./routes/api/dynamo"), function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
@@ -24,19 +26,3 @@ const port = process.env.PORT || 3001;
 app.listen(port, function () {
   console.log(`Express app running on port ${port}`);
 });
-
-// const {
-//   DynamoDBClient,
-//   ListTablesCommand,
-// } = require("@aws-sdk/client-dynamodb");
-
-// (async () => {
-//   const client = new DynamoDBClient({ region: "us-east-1" });
-//   const command = new ListTablesCommand({});
-//   try {
-//     const results = await client.send(command);
-//     console.log(results.TableNames.join("\n"));
-//   } catch (err) {
-//     console.error("hellofrfer", err);
-//   }
-// })();
