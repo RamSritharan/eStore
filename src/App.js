@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import Nav from "./components/Nav/Nav.jsx";
+import "./App.css";
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Homepage } from "./pages/Homepage";
 
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+        <Nav />
+      </div>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/Men's" />
+        <Route path="/Women's" />
+        <Route path="/About Us" />
+      </Routes>
+    </>
   );
 }
 
