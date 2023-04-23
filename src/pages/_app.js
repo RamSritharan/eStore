@@ -1,4 +1,4 @@
-// estore.com/
+import "../components/Nav/Nav.css";
 
 function MyApp({ Component, pageProps }) {
   return (

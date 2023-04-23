@@ -1,15 +1,30 @@
 import React from "react";
+import Link from "next/link";
 
 function Nav() {
   return (
     <>
       {" "}
       <div className="nav">
-        <a className="nav">Home</a>
-        <a className="nav">Men's</a>
-        <a className="nav">Women's</a>
-        <a className="nav">About Us</a>
-        <a className="nav">Locations</a>
+        <a className="nav">
+          <Link href="/"> Home </Link>
+        </a>
+        <a className="nav">
+          {" "}
+          <Link href="/men"> Men </Link>
+        </a>
+        <a className="nav">
+          {" "}
+          <Link href="/women"> Women </Link>
+        </a>
+        <a className="nav">
+          {" "}
+          <Link href="/cart"> Cart </Link>
+        </a>
+        <a className="nav">
+          {" "}
+          <Link href="/aboutus"> About Us </Link>
+        </a>
       </div>
     </>
   );
