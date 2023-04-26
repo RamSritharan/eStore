@@ -7,7 +7,7 @@ function Card(props) {
 
   return (
     <>
-      <div class="card" style="width: 10px; color: black">
+      <div class="card">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>

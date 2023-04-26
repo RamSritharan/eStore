@@ -2,6 +2,10 @@ body {
   background-color: rgb(247, 231, 231);
 }
 
+.logo {
+  max-block-size: 150px;
+}
+
 .nav {
   color: red;
   text-decoration: none;
@@ -10,8 +14,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding: 15px;
+  justify-content: space-evenly;
   background-color: #eeeeea;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -20,6 +23,7 @@ body {
   border-color: black;
 }
 
-.logo {
-  max-block-size: 150px;
+.linkBar:hover {
+  font-style: normal;
+  text-decoration: none;
 }

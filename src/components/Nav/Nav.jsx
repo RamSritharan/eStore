@@ -8,12 +8,27 @@ function Nav() {
         <img src="storelogo.png" className="logo"></img>
         <div className="tab" class="hover:bold">
           {" "}
-          <Link href="/"> Home </Link>
+          <Link href="/" className="linkBar">
+            {" "}
+            Home{" "}
+          </Link>
         </div>
-        <Link href="/men"> Men </Link>
-        <Link href="/women"> Women </Link>
-        <Link href="/cart"> Cart </Link>
-        <Link href="/aboutus"> About Us </Link>
+        <Link href="/men" className="linkBar">
+          {" "}
+          Men{" "}
+        </Link>
+        <Link href="/women" className="linkBar">
+          {" "}
+          Women{" "}
+        </Link>
+        <Link href="/cart" className="linkBar">
+          {" "}
+          Cart{" "}
+        </Link>
+        <Link href="/aboutus" className="linkBar">
+          {" "}
+          About Us{" "}
+        </Link>
       </div>
     </>
   );

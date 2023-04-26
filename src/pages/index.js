@@ -6,7 +6,7 @@ function LandingPage() {
   return (
     <>
       <Nav />
-      {/* <Card /> */}
+      <Card />
     </>
   );
 }
