@@ -1,0 +1,25 @@
+body {
+  background-color: rgb(247, 231, 231);
+}
+
+.nav {
+  color: red;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #eeeeea;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: oblique;
+  border: after 5px;
+  border-color: black;
+}
+
+.logo {
+  max-block-size: 150px;
+}

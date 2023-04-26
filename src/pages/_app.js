@@ -1,4 +1,4 @@
-import "../components/Nav/Nav.css";
+import "../styles/styles.css";
 
 function MyApp({ Component, pageProps }) {
   return (
