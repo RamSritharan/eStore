@@ -6,7 +6,7 @@ function Nav() {
     <>
       <div className="nav">
         <img src="storelogo.png" className="logo"></img>
-        <div className="tab" class="hover:bold">
+        <div className="tab">
           {" "}
           <Link href="/" className="linkBar">
             {" "}

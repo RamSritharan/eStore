@@ -58,7 +58,7 @@ async function productItem() {
     const dataJSON = data.Responses.Products;
     const theProduct = dataJSON.map((i) => i.Product_title);
     console.log("Success, items retrieved", theProduct);
-    return data;
+    return theProduct;
   } catch (err) {
     console.log("Error", err);
   }
