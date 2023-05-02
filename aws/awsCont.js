@@ -51,14 +51,14 @@ const params = {
   ReturnConsumedCapacity: "INDEXES" || "TOTAL" || "NONE",
 };
 
-async function productItem() {
+async function productItem(req, res) {
   const client = new DynamoDBClient({ region: "us-east-1" });
   try {
     const data = await client.send(new BatchGetItemCommand(params));
     const dataJSON = data.Responses.Products;
-    const theProduct = dataJSON.map((i) => i.Product_title);
+    const theProduct = JSON.stringify(dataJSON.map((i) => i.Product_title));
     console.log("Success, items retrieved", theProduct);
-    return theProduct;
+    res.status(200).json(theProduct);
   } catch (err) {
     console.log("Error", err);
   }

@@ -6,18 +6,15 @@ import { useEffect, useState } from "react";
 function LandingPage(props) {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      let data = await fetch("http://localhost:3001/list")
-        .then((response) => response.json())
-        .then(() => {
-          setProducts(response);
-        });
-    }
-    fetchData();
-  }, []);
-
-  console.log("hello", products);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const res = await fetch("http://localhost:8080/list");
+  //     const data = res.json();
+  //     console.log("yolo", data);
+  //     return data;
+  //   }
+  //   fetchData();
+  // });
 
   return (
     <>
@@ -27,10 +24,11 @@ function LandingPage(props) {
   );
 }
 
-// export async function getStaticProps() {
-//   const res = await fetch("http://localhost:3001/list");
-//   const data = await res.json();
-//   console.log("hello", data);
-// }
+export async function getStaticProps(props) {
+  const res = await fetch("http://localhost:8080/list");
+  const data = await res.json();
+  console.log("yollloooo", data);
+  return { props: { data } };
+}
 
 export default LandingPage;
