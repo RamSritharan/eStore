@@ -56,9 +56,11 @@ async function productItem(req, res) {
   try {
     const data = await client.send(new BatchGetItemCommand(params));
     const dataJSON = data.Responses.Products;
-    const theProduct = JSON.stringify(dataJSON.map((i) => i.Product_title));
-    console.log("Success, items retrieved", theProduct);
-    res.status(200).json(theProduct);
+    // const theProduct = JSON.stringify(dataJSON);
+    // const theProduct = JSON.stringify(dataJSON.map((i) => i.Product_title ));
+
+    console.log("Success, items retrieved", dataJSON);
+    res.status(200).json(dataJSON);
   } catch (err) {
     console.log("Error", err);
   }

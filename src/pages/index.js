@@ -1,10 +1,9 @@
 // estore.com/
 import Nav from "../components/Nav/Nav";
 import Card from "../components/Card/cards";
-import { useEffect, useState } from "react";
 
-function LandingPage(props) {
-  const [products, setProducts] = useState([]);
+function LandingPage({ data }) {
+  // const [products, setProducts] = useState();
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -19,15 +18,16 @@ function LandingPage(props) {
   return (
     <>
       <Nav />
-      <Card />
+      <Card products={data} />
     </>
   );
 }
 
-export async function getStaticProps(props) {
+export async function getServerSideProps() {
   const res = await fetch("http://localhost:8080/list");
   const data = await res.json();
   console.log("yollloooo", data);
+
   return { props: { data } };
 }
 
