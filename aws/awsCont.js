@@ -44,7 +44,8 @@ const params = {
           },
         },
       ],
-      ProjectionExpression: "Product_Id, Product_title, Product_description",
+      ProjectionExpression:
+        "Product_Id, Product_title, Product_description, Product_picture",
       ConsistentRead: true || false,
     },
   },

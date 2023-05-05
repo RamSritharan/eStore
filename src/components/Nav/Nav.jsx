@@ -5,7 +5,9 @@ function Nav() {
   return (
     <>
       <div className="nav">
-        <img src="storelogo.png" className="logo"></img>
+        <a href="/">
+          <img src="storelogo.png" className="logo" />
+        </a>
         <div className="tab">
           {" "}
           <Link href="/" className="linkBar">

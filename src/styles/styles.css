@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(247, 231, 231);
+  background-color: rgb(240, 235, 235);
 }
 
 .logo {
@@ -7,7 +7,6 @@ body {
 }
 
 .nav {
-  color: red;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 30px;
@@ -24,6 +23,30 @@ body {
 }
 
 .linkBar:hover {
+  color: red;
   font-style: normal;
   text-decoration: none;
+}
+
+.imagecard {
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.imagetitle {
+  font-size: 25px;
+}
+
+.card-text {
+  font-size: 18px;
+}
+
+.imagetitle:hover {
+  text-decoration: underline;
+}
+
+.image {
+  height: 250px;
+  width: 250px;
 }

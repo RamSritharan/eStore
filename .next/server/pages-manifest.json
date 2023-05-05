@@ -2,9 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/cart": "pages/cart.js",
   "/": "pages/index.js",
-  "/women": "pages/women.js",
-  "/aboutus": "pages/aboutus.js",
-  "/men": "pages/men.js"
+  "/men": "pages/men.js",
+  "/women": "pages/women.js"
 }
