@@ -10,17 +10,19 @@ function Card(props) {
 
   return (
     <>
-      {props.products.map((c) => (
-        <div className="imagecard">
-          <h5 className="imagetitle"> {c.Product_title.S}</h5>
-          <p className="card-text">{c.Product_description.S}</p>
-          <img src={c.Product_picture.S} className="image"></img>
-          <br />
-          <br />
+      <div>
+        {props.products.map((c) => (
+          <div className="imagecard">
+            <h5 className="imagetitle"> {c.Product_title.S}</h5>
+            <p className="card-text">{c.Product_description.S}</p>
+            <img src={c.Product_picture.S} className="image"></img>
+            <br />
+            <br />
 
-          <button> Add to Cart </button>
-        </div>
-      ))}
+            <button> Add to Cart </button>
+          </div>
+        ))}
+      </div>
     </>
   );
 }

@@ -1,6 +1,7 @@
 // estore.com/
 import Nav from "../components/Nav/Nav";
 import Card from "../components/Card/cards";
+import SideNav from "../components/sideNav/sideNav";
 
 function LandingPage({ data }) {
   // const [products, setProducts] = useState();
@@ -18,7 +19,14 @@ function LandingPage({ data }) {
   return (
     <>
       <Nav />
-      <Card products={data} />
+      <div className="main-container">
+        <div className="child2">
+          <SideNav />
+        </div>
+        <div className="child1">
+          <Card products={data} />
+        </div>
+      </div>
     </>
   );
 }

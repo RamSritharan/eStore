@@ -1,5 +1,16 @@
 body {
-  background-color: rgb(240, 235, 235);
+  background-color: rgb(255, 255, 255);
+}
+
+.child1 {
+  display: table-cell;
+  width: 85%;
+}
+
+.child2 {
+  display: table-cell;
+  width: 15%;
+  align-items: center;
 }
 
 .logo {
@@ -14,22 +25,24 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #eeeeea;
+  background-color: #293e2f;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-style: oblique;
   border: after 5px;
   border-color: black;
 }
 
-.linkBar:hover {
-  color: red;
-  font-style: normal;
+.linkBar {
+  color: white;
   text-decoration: none;
 }
 
+.linkBar:hover {
+  color: red;
+  font-size: 110%;
+}
+
 .imagecard {
-  flex-direction: column;
   text-align: center;
   justify-content: center;
 }
@@ -49,4 +62,8 @@ body {
 .image {
   height: 250px;
   width: 250px;
+}
+
+.checklist {
+  color: black;
 }
