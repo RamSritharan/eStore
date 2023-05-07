@@ -5,6 +5,8 @@ body {
 .child1 {
   display: table-cell;
   width: 85%;
+  align-items: center;
+  transform: translateX(550px);
 }
 
 .child2 {
@@ -43,6 +45,7 @@ body {
 }
 
 .imagecard {
+  align-items: center;
   text-align: center;
   justify-content: center;
 }
