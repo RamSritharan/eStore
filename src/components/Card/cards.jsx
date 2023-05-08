@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+let cart = [];
 
 function Card(props) {
   const [product, setProduct] = useState({
@@ -9,17 +10,16 @@ function Card(props) {
 
   // const [productPrice, setproductPrice] = useState();
 
-  const addtoCart = async (e) => {
-    setProduct({
-      title: e.imagetitle.innerHTML,
-      description: e.image.src,
-      picture: e.description.innterHTML,
-    });
+  const addtoCart = async () => {
+    // setProduct({
+    //   title: e.target.Product_title,
+    //   description: e.target.Product_description,
+    //   picture: e.target.Product_picture,
+    // });
 
-    let cart = [];
     cart.push(product);
-    jsonCart = JSON.stringify(cart);
-    localStorage.setItem("cart", jsonCart);
+    let jsonCart = JSON.stringify(cart);
+    sessionStorage.setItem("cart", jsonCart);
     console.log(product.title);
   };
 
@@ -29,12 +29,26 @@ function Card(props) {
         {props.products.map((c) => (
           <div className="imagecard">
             <h5 className="imagetitle"> {c.Product_title.S}</h5>
-            <p className="description">{c.Product_description.S}</p>
-            <img src={c.Product_picture.S} className="image"></img>
+            <p className="description" name="description">
+              {c.Product_description.S}
+            </p>
+            <img src={c.Product_picture.S} className="image" name="image"></img>
             <br />
             <br />
 
-            <button onClick={addtoCart()}> Add to Cart </button>
+            <button
+              onClick={() => {
+                setProduct({
+                  title: c.Product_title.S,
+                  description: c.Product_description.S,
+                  picture: c.Product_picture.S,
+                }),
+                  addtoCart();
+              }}
+            >
+              {" "}
+              Add to Cart{" "}
+            </button>
           </div>
         ))}
       </div>

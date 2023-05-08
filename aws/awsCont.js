@@ -67,4 +67,10 @@ async function productItem(req, res) {
   }
 }
 
+// const putItem = async () => {
+//   export const params = {
+//     TableName:
+//   }
+// }
+
 module.exports = { listMain, productItem };
