@@ -8,6 +8,8 @@ Tech Stack Used:
 
 - ReactJS
 - NextJS
-- Javascript
 - ExpressJS
-- AWS S3 and DynamoDB
+- NodeJS
+- DynamoDB
+- Local Storage & Session Storage
+- Docker

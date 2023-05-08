@@ -10,7 +10,7 @@ function SideNav(props) {
   return (
     <>
       <div className="checklist">
-        <div className="Filter">Filter:</div>
+        <div className="filterTitle">Filter Bar</div>
         <div className="listContainer">
           {checkList.map((item) => (
             <div>
