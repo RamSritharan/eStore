@@ -19,7 +19,7 @@ function Card(props) {
 
     cart.push(product);
     let jsonCart = JSON.stringify(cart);
-    sessionStorage.setItem("cart", jsonCart);
+    localStorage.setItem("cart", jsonCart);
     console.log(product.title);
   };
 
@@ -29,9 +29,7 @@ function Card(props) {
         {props.products.map((c) => (
           <div className="imagecard">
             <h5 className="imagetitle"> {c.Product_title.S}</h5>
-            <p className="description" name="description">
-              {c.Product_description.S}
-            </p>
+            <p className="description">{c.Product_description.S}</p>
             <img src={c.Product_picture.S} className="image" name="image"></img>
             <br />
             <br />
