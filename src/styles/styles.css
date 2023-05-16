@@ -82,3 +82,9 @@ body {
 .filterTitle {
   font-size: 20px;
 }
+
+.checkout {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
