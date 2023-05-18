@@ -3,6 +3,7 @@ const {
   ListTablesCommand,
   BatchGetItemCommand,
   UpdateItemCommand,
+  PutItemCommand,
 } = require("@aws-sdk/client-dynamodb");
 
 async function listMain() {
@@ -65,38 +66,35 @@ async function productItem(req, res) {
   }
 }
 
-//model in the server side, //transform it into a cart item object
+//Post cart into orders made
+let orderNumber = 0;
+const date = new Date();
 
-// const putItem = async () => {
-//   export const params = {
-//     TableName:
+async function productPost(req, res) {
+  try {
+    const client = new DynamoDBClient({ region: "us-east-1" });
+    const item = req.body;
+    console.log(item);
+    res.status(200).json(req.body);
+  } catch {
+    console.error;
+  }
+}
+
+//   try{
+//     const data = new PutItemCommand({
+//       TableName: "Orders",
+//       Item: {
+//         OrderNo: orderNumber++,
+//         order_date: date,
+//         order_items: req.body.products.map(e => {
+//           e.product
+//         })
+//         order_total:
+
+//       }
+//     })
 //   }
 // }
 
-// const updateParams = {
-//   TableName: "Products",
-//   Key: {
-//     PRIMARY_KEY: "Product_Id",
-//     SORT_KEY: "Quantity",
-//   },
-//   ProjectionExpression: "#p",
-//   ExpressionAttributeNames: { "#p": "Product_price" },
-//   UpdateExpression: "set info.#p = :p",
-//   ExpressionAttributeValues: {
-//     ":p": "25.50",
-//   },
-// };
-
-// // const updateItem = async (req, res) => {
-// //   const client = new DynamoDBClient({ region: "us-east-1" });
-// //   try {
-// //     const data = await client.send(new UpdateItemCommand(updateParams));
-// //     const dataJSON = data;
-// //     console.log("success items updated", dataJSON);
-// //     res.status(200).json(dataJSON);
-// //   } catch (err) {
-// //     console.log("Error", err);
-// //   }
-// // };
-
-module.exports = { listMain, productItem };
+module.exports = { listMain, productItem, productPost };

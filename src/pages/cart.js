@@ -4,6 +4,8 @@ import Nav from "../components/Nav/Nav";
 
 function CartPage() {
   const [cart, setCart] = useState([]);
+  const [checkout, setCheckout] = useState([]);
+
   const productCodes = [
     { product: "T-shirt", description: "", picture: "", quantity: 0, price: 0 },
     { product: "Sweater", description: "", picture: "", quantity: 0, price: 0 },
@@ -13,7 +15,6 @@ function CartPage() {
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-
     // These options are needed to round to whole numbers if that's what you want.
     //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
     //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
@@ -23,7 +24,6 @@ function CartPage() {
     // Perform localStorage action
     let JSONitems = localStorage.getItem("cart");
     let items = JSON.parse(JSONitems);
-    console.log("Da items in the cart", items);
 
     if (items !== null) {
       items.forEach((c) => {
@@ -48,6 +48,21 @@ function CartPage() {
 
   console.log(cart);
 
+  let checkoutTerm = async (e) => {
+    e.preventDefault();
+    let jwt = localStorage.getItem("token");
+    setCheckout(JSON.stringify(cart));
+    let fetchResponse = await fetch("http://localhost:8080/orderAdd", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ products: productCodes }),
+    });
+    let checkoutResponse = await fetchResponse.json(); // <-- decode fetch response
+    console.log("STATUS", checkoutResponse);
+  };
+
   return (
     <>
       <Nav />
@@ -68,7 +83,11 @@ function CartPage() {
             <div></div>
           )
         )}
-        ;<button className="description"> Checkout</button>
+        ;
+        <button className="description" onClick={checkoutTerm}>
+          {" "}
+          Checkout
+        </button>
       </div>
     </>
   );

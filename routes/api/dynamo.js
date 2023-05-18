@@ -5,5 +5,6 @@ const dynCtrl = require("../../models/awsCont");
 
 // router.get("/list", dynCtrl.listMain);
 router.use("/list", dynCtrl.productItem);
+router.use("/orderAdd", dynCtrl.productPost);
 
 module.exports = router;
