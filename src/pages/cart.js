@@ -46,18 +46,18 @@ function CartPage() {
     setCart(productCodes);
   }, []);
 
-  console.log(cart);
-
   let checkoutTerm = async (e) => {
     e.preventDefault();
-    let jwt = localStorage.getItem("token");
-    setCheckout(JSON.stringify(cart));
+    setCheckout(JSON.stringify(cart)); //Cart works
     let fetchResponse = await fetch("http://localhost:8080/orderAdd", {
       method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: JSON.stringify({ products: productCodes }),
+      body: JSON.stringify({ checkout }),
     });
     let checkoutResponse = await fetchResponse.json(); // <-- decode fetch response
     console.log("STATUS", checkoutResponse);
