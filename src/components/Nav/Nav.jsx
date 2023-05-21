@@ -7,14 +7,11 @@ function Nav() {
       <div className="nav">
         <a href="/">
           <img src="storelogo.png" className="logo" />
-        </a>
-        <div className="tab">
+        </a>{" "}
+        <Link href="/" className="linkBar">
           {" "}
-          <Link href="/" className="linkBar">
-            {" "}
-            Home{" "}
-          </Link>
-        </div>
+          Home{" "}
+        </Link>
         <Link href="/men" className="linkBar">
           {" "}
           Men{" "}

@@ -1,18 +1,16 @@
 body {
-  background-color: rgba(255, 255, 255, 0.793);
+  background-color: ani;
 }
 
 .child1 {
   display: table-cell;
-  width: 85%;
-  align-items: center;
-  transform: translateX(-50px);
 }
 
 .child2 {
+  display: flex;
+  flex-direction: column;
   display: table-cell;
   width: 15%;
-  align-items: center;
 }
 
 .logo {
@@ -35,12 +33,12 @@ body {
 }
 
 .linkBar {
-  color: white;
+  color: antiquewhite;
   text-decoration: none;
 }
 
 .linkBar:hover {
-  color: antiquewhite;
+  color: white;
   font-size: 110%;
 }
 
@@ -54,6 +52,8 @@ body {
   margin-bottom: 10px;
   margin-top: 10px;
   background-color: rgb(251, 246, 246);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .imagetitle {
@@ -84,6 +84,8 @@ body {
   padding-bottom: 100%;
   text-align: left;
   width: 50%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .filterTitle {
@@ -102,10 +104,18 @@ body {
   text-align: center;
   color: antiquewhite;
   align-items: center;
-  justify-content: space-evenly;
   background-color: #293e2f;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  border: after 5px;
   border-color: black;
+}
+
+.detailPage {
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+.imagePage {
+  height: 500px;
+  width: 500px;
 }
