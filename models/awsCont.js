@@ -72,8 +72,7 @@ const date = new Date();
 
 async function productPost(req, res) {
   try {
-    const client = new DynamoDBClient({ region: "us-east-1" });
-    const item = req.body[0];
+    const item = req.body;
     console.log("Retrieved:", item);
     res.status(200).json("created");
   } catch {

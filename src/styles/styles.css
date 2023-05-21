@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.793);
 }
 
 .child1 {
@@ -40,14 +40,20 @@ body {
 }
 
 .linkBar:hover {
-  color: red;
+  color: antiquewhite;
   font-size: 110%;
 }
 
 .imagecard {
-  align-items: center;
   text-align: center;
-  justify-content: center;
+  border: 1px solid gray;
+  border-radius: 25px;
+  width: 30%;
+  transform: translateX(400px);
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: rgb(251, 246, 246);
 }
 
 .imagetitle {
@@ -77,6 +83,7 @@ body {
   padding-left: 20px;
   padding-bottom: 100%;
   text-align: left;
+  width: 50%;
 }
 
 .filterTitle {
@@ -87,4 +94,18 @@ body {
   align-items: center;
   text-align: center;
   justify-content: center;
+}
+
+.pageFooter {
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  color: antiquewhite;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #293e2f;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: after 5px;
+  border-color: black;
 }

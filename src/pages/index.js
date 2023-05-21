@@ -2,6 +2,7 @@
 import Nav from "../components/Nav/Nav";
 import Card from "../components/Card/cards";
 import SideNav from "../components/sideNav/sideNav";
+import BottomBar from "../components/bottomBar/bottomBar";
 
 function LandingPage({ data }) {
   // const [products, setProducts] = useState();
@@ -27,6 +28,7 @@ function LandingPage({ data }) {
           <Card products={data} />
         </div>
       </div>
+      <BottomBar />
     </>
   );
 }
