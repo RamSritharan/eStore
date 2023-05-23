@@ -49,19 +49,17 @@ function CartPage() {
   let checkoutTerm = async (e) => {
     e.preventDefault();
     let jsonCheckout = JSON.stringify(cart); //Cart works
-    let jwt = localStorage.getItem("token");
-    let fetchResponse = await fetch("api/dynamo/orderAdd", {
+    console.log("vinotttth", typeof jsonCheckout);
+    let fetchResponse = await fetch("http://localhost:8080/orderAdd", {
       method: "POST",
-      cache: "no-cache",
-      credentials: "same-origin",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + jwt,
       },
-      body: { jsonCheckout },
+      body: jsonCheckout,
     });
-    let checkoutResponse = await fetchResponse.json(); // <-- decode fetch response
-    console.log("STATUS", checkoutResponse);
+    console.log(fetchResponse);
+    // let checkoutResponse = await fetchResponse.json(); // <-- decode fetch response
+    // console.log("STATUS", checkoutResponse);
   };
 
   return (
@@ -95,3 +93,5 @@ function CartPage() {
 }
 
 export default CartPage;
+
+// let jwt = localStorage.getItem("token");

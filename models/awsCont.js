@@ -73,10 +73,14 @@ const date = new Date();
 async function productPost(req, res) {
   try {
     const item = req.body;
-    console.log("Retrieved:", item);
+    console.log(req);
+    console.log(req.body);
+
+    // const parsedItem = JSON.parse(item);
+    // console.log("Retrieved:", parsedItem);
     res.status(200).json("created");
-  } catch {
-    console.error;
+  } catch (e) {
+    console.error(e);
   }
 }
 

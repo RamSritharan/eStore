@@ -6,6 +6,8 @@ import { useState } from "react";
 function DetailPage(props) {
   const router = useRouter();
 
+  //   let cart = localStorage.getItem("cart");
+
   const [product, setProduct] = useState({
     title: "",
     description: "",
