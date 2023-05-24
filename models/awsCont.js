@@ -1,8 +1,10 @@
+require("dotenv").config();
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
+
 const {
   DynamoDBClient,
   ListTablesCommand,
   BatchGetItemCommand,
-  UpdateItemCommand,
   PutItemCommand,
 } = require("@aws-sdk/client-dynamodb");
 
@@ -60,6 +62,7 @@ async function productItem(req, res) {
     const data = await client.send(new BatchGetItemCommand(params));
     const dataJSON = data.Responses.Products;
     console.log("Success, items retrieved", dataJSON);
+    mappedItems = dataJSON;
     res.status(200).json(dataJSON);
   } catch (err) {
     console.log("Error", err);
@@ -67,37 +70,33 @@ async function productItem(req, res) {
 }
 
 //Post cart into orders made
-let orderNumber = 0;
-const date = new Date();
+const storeItems = new Map({ mappedItems });
+let mappedItems;
 
 async function productPost(req, res) {
   try {
-    const item = req.body;
-    console.log(req);
     console.log(req.body);
-
-    // const parsedItem = JSON.parse(item);
-    // console.log("Retrieved:", parsedItem);
-    res.status(200).json("created");
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      line_items: req.body.items.map((item) => {
+        const storeItem = storeItems.get(item.Product_Id);
+        return {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: storeItem.Product_title,
+            },
+            unit_amount: storeItem.priceInCents,
+          },
+          quantity: item.quantity,
+        };
+      }),
+    });
+    res.status({ url: session.url });
   } catch (e) {
-    console.error(e);
+    res.status(500).json({ error: e.message });
   }
 }
 
-//   try{
-//     const data = new PutItemCommand({
-//       TableName: "Orders",
-//       Item: {
-//         OrderNo: orderNumber++,
-//         order_date: date,
-//         order_items: req.body.products.map(e => {
-//           e.product
-//         })
-//         order_total:
-
-//       }
-//     })
-//   }
-// }
-
-module.exports = { listMain, productItem, productPost };
+module.exports = { listMain, productItem, productPost, mappedItems };
