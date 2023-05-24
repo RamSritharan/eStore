@@ -56,6 +56,8 @@ const params = {
   ReturnConsumedCapacity: "INDEXES" || "TOTAL" || "NONE",
 };
 
+let mappedItems;
+
 async function productItem(req, res) {
   const client = new DynamoDBClient({ region: "us-east-1" });
   try {
@@ -70,8 +72,7 @@ async function productItem(req, res) {
 }
 
 //Post cart into orders made
-const storeItems = new Map({ mappedItems });
-let mappedItems;
+const storeItems = mappedItems;
 
 async function productPost(req, res) {
   try {
@@ -87,7 +88,7 @@ async function productPost(req, res) {
             product_data: {
               name: storeItem.Product_title,
             },
-            unit_amount: storeItem.priceInCents,
+            unit_amount: storeItem.product_cents,
           },
           quantity: item.quantity,
         };
