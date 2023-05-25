@@ -108,13 +108,13 @@ async function productPost(req, res) {
       cancel_url: "http://localhost:3000",
     });
     res.json({ url: session.url });
-    postOrders(req, res);
+    await postOrders(req, res);
   } catch (err) {
     console.log("Error", err);
   }
 }
 
-let OrderId;
+let OrderId = 0;
 
 async function postOrders(req, res) {
   const client = new DynamoDBClient({ region: "us-east-1" });
@@ -125,18 +125,19 @@ async function postOrders(req, res) {
     mappedOrders.products.push(c.product);
     mappedOrders.totalAmount += c.price;
     mappedOrders.date = date;
-    mappedOrders.orderId += 1;
+    OrderId += 1;
   });
 
-  let postParams = {
+  var postParams = {
     TableName: "Orders",
     Item: {
-      OrderId: { N: `${JSON.stringify(OrderId)}` },
-      Products: { S: `${JSON.stringify(mappedOrders.products)}` },
-      Total: { N: `${JSON.stringify(mappedOrders.totalAmount)}` },
-      Date: { S: `${JSON.stringify(mappedOrders.date)}` },
+      OrderId: { N: "1" },
+      Products: { S: `${mappedOrders.products}` },
+      Total: { S: `${mappedOrders.totalAmount}` },
+      Date: { S: `${mappedOrders.date}` },
     },
   };
+
   try {
     const data = await client.send(new PutItemCommand(postParams));
     console.log("Success - Posted on Amazon DB", data);
