@@ -55,10 +55,14 @@ function CartPage() {
         "Content-Type": "application/json",
       },
       body: jsonCheckout,
-    });
-    console.log(fetchResponse);
-    // let checkoutResponse = await fetchResponse.json(); // <-- decode fetch response
-    // console.log("STATUS", checkoutResponse);
+    })
+      .then((res) => {
+        if (res.ok) return res.json(); //why was this needed?
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+      });
   };
 
   return (

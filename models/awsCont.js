@@ -95,19 +95,19 @@ async function productPost(req, res) {
           price_data: {
             currency: "usd",
             product_data: {
-              name: item.product,
+              name: "T-shirt",
             },
-            unit_amount: storeItem.priceInCents,
+            unit_amount: 100000,
           },
-          quantity: item.quantity,
+          quantity: 5,
         };
       }),
-      success_url: "http://localhost:3000/",
-      cancel_url: "http://localhost:3000/",
+      success_url: "http://localhost:3000",
+      cancel_url: "http://localhost:3000",
     });
-    res.status({ url: session.url });
+    res.json({ url: session.url });
   } catch (err) {
-    res.status(500).end();
+    console.log("Error", err);
   }
 }
 
