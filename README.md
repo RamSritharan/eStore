@@ -8,8 +8,10 @@ Tech Stack Used:
 
 - ReactJS
 - NextJS
+- ServerSideProps
 - ExpressJS
 - NodeJS
 - DynamoDB
 - Local Storage & Session Storage
 - Docker
+- Stripe API

@@ -4,7 +4,6 @@ import Nav from "../components/Nav/Nav";
 
 function CartPage() {
   const [cart, setCart] = useState([]);
-  const [checkout, setCheckout] = useState([]);
 
   const productCodes = [
     { product: "T-shirt", description: "", picture: "", quantity: 0, price: 0 },
@@ -47,6 +46,13 @@ function CartPage() {
   }, []);
 
   let checkoutTerm = async (e) => {
+    productCodes.forEach = (c) => {
+      if (c.quantity == 0) {
+        delete productCodes[c];
+      }
+    };
+    setCart(productCodes);
+
     e.preventDefault();
     let jsonCheckout = JSON.stringify(cart); //Cart works
     let fetchResponse = await fetch("http://localhost:8080/orderAdd", {

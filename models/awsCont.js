@@ -1,5 +1,6 @@
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
+const date = Date();
 
 const {
   DynamoDBClient,
@@ -78,6 +79,7 @@ async function productPost(req, res) {
   const dataJSON = data.Responses.Products;
   let mappedItems = [];
   mappedItems.push(dataJSON);
+  console.log(req.body);
 
   const storeItems = new Map([
     ["T-shirt", { priceInCents: 10000, name: "T-Shirt" }],
@@ -99,16 +101,49 @@ async function productPost(req, res) {
             },
             unit_amount: 100000,
           },
-          quantity: item.quantity + 1,
+          quantity: item.quantity,
         };
       }),
       success_url: "http://localhost:3000",
       cancel_url: "http://localhost:3000",
     });
     res.json({ url: session.url });
+    postOrders(req, res);
   } catch (err) {
     console.log("Error", err);
   }
 }
 
-module.exports = { listMain, productItem, productPost, mappedItems };
+let OrderId;
+
+async function postOrders(req, res) {
+  const client = new DynamoDBClient({ region: "us-east-1" });
+  console.log(req.body);
+  const mappedOrders = { products: [], totalAmount: 0, date: "" };
+
+  req.body.forEach((c) => {
+    mappedOrders.products.push(c.product);
+    mappedOrders.totalAmount += c.price;
+    mappedOrders.date = date;
+    mappedOrders.orderId += 1;
+  });
+
+  let postParams = {
+    TableName: "Orders",
+    Item: {
+      OrderId: { N: `${JSON.stringify(OrderId)}` },
+      Products: { S: `${JSON.stringify(mappedOrders.products)}` },
+      Total: { N: `${JSON.stringify(mappedOrders.totalAmount)}` },
+      Date: { S: `${JSON.stringify(mappedOrders.date)}` },
+    },
+  };
+  try {
+    const data = await client.send(new PutItemCommand(postParams));
+    console.log("Success - Posted on Amazon DB", data);
+    res.json(data);
+  } catch (err) {
+    console.log("Error", err);
+  }
+}
+
+module.exports = { listMain, productItem, productPost };
