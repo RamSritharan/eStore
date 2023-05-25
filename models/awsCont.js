@@ -95,11 +95,11 @@ async function productPost(req, res) {
           price_data: {
             currency: "usd",
             product_data: {
-              name: "T-shirt",
+              name: item.product,
             },
             unit_amount: 100000,
           },
-          quantity: 5,
+          quantity: item.quantity + 1,
         };
       }),
       success_url: "http://localhost:3000",
