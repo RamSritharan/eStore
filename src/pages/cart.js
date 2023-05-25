@@ -49,7 +49,6 @@ function CartPage() {
   let checkoutTerm = async (e) => {
     e.preventDefault();
     let jsonCheckout = JSON.stringify(cart); //Cart works
-    console.log("vinotttth", typeof jsonCheckout);
     let fetchResponse = await fetch("http://localhost:8080/orderAdd", {
       method: "POST",
       headers: {

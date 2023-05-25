@@ -49,14 +49,14 @@ const params = {
         },
       ],
       ProjectionExpression:
-        "Product_Id, Product_title, Product_description, Product_picture, Product_price",
+        "Product_Id, Product_title, Product_description, Product_picture, Product_price, Product_cents",
       ConsistentRead: true || false,
     },
   },
   ReturnConsumedCapacity: "INDEXES" || "TOTAL" || "NONE",
 };
 
-let mappedItems;
+let mappedItems = [];
 
 async function productItem(req, res) {
   const client = new DynamoDBClient({ region: "us-east-1" });
@@ -64,39 +64,50 @@ async function productItem(req, res) {
     const data = await client.send(new BatchGetItemCommand(params));
     const dataJSON = data.Responses.Products;
     console.log("Success, items retrieved", dataJSON);
-    mappedItems = dataJSON;
     res.status(200).json(dataJSON);
   } catch (err) {
     console.log("Error", err);
   }
 }
 
-//Post cart into orders made
-const storeItems = mappedItems;
+//Post cart into orders made3
 
 async function productPost(req, res) {
+  const client = new DynamoDBClient({ region: "us-east-1" });
+  const data = await client.send(new BatchGetItemCommand(params));
+  const dataJSON = data.Responses.Products;
+  let mappedItems = [];
+  mappedItems.push(dataJSON);
+
+  const storeItems = new Map([
+    ["T-shirt", { priceInCents: 10000, name: "T-Shirt" }],
+    ["Shorts", { priceInCents: 20000, name: "Learn CSS Today" }],
+    ["Sweater", { priceInCents: 20000, name: "Learn CSS Today" }],
+  ]);
+
   try {
-    console.log(req.body);
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-      line_items: req.body.items.map((item) => {
-        const storeItem = storeItems.get(item.Product_Id);
+      line_items: req.body.map((item) => {
+        const storeItem = storeItems.get(item.product);
         return {
           price_data: {
             currency: "usd",
             product_data: {
-              name: storeItem.Product_title,
+              name: item.product,
             },
-            unit_amount: storeItem.product_cents,
+            unit_amount: storeItem.priceInCents,
           },
           quantity: item.quantity,
         };
       }),
+      success_url: "http://localhost:3000/",
+      cancel_url: "http://localhost:3000/",
     });
     res.status({ url: session.url });
-  } catch (e) {
-    res.status(500).json({ error: e.message });
+  } catch (err) {
+    res.status(500).end();
   }
 }
 
