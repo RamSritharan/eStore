@@ -3,7 +3,7 @@ import React from "react";
 function BottomBar() {
   return (
     <>
-      <div className="pageFooter">All Rights Reserved; Swole Outlet</div>
+      <div className="pageFooter">All Rights Reserved; OBO Store</div>
     </>
   );
 }

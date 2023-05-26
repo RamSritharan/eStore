@@ -1,8 +1,8 @@
 // estore.com/
 import Nav from "../components/Nav/Nav";
 
-function AboutPage() {
+function Orders() {
   return <Nav />;
 }
 
-export default AboutPage;
+export default Orders;

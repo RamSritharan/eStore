@@ -22,11 +22,11 @@ function Nav() {
         </Link>
         <Link href="/cart" className="linkBar">
           {" "}
-          Cart{" "}
+          🛒 Cart{" "}
         </Link>
-        <Link href="/aboutus" className="linkBar">
+        <Link href="/orders" className="linkBar">
           {" "}
-          About Us{" "}
+          Orders{" "}
         </Link>
       </div>
     </>

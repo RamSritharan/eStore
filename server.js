@@ -23,6 +23,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/list", require("./routes/api/dynamo"));
+app.get("/getOrders", require("./routes/api/dynamo"));
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
