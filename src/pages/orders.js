@@ -9,8 +9,8 @@ function Orders({ data }) {
         <Nav />
         {data.map((c) => (
           <div>
-            <h5> {c.OrderId.N} </h5>
-            <p> {c.Products.S} </p>
+            <h5> Order ID: {c.OrderId.N} </h5>
+            <p> Products Purchased: {c.Products.S} </p>
           </div>
         ))}
       </div>
