@@ -36,8 +36,6 @@ function LandingPage({ data }) {
 export async function getServerSideProps() {
   const res = await fetch("http://localhost:8080/list");
   const data = await res.json();
-  console.log("yollloooo", data);
-
   return { props: { data } };
 }
 

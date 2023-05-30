@@ -188,7 +188,7 @@ async function getAllOrders(req, res) {
   try {
     const data = await client.send(command);
     dataJSON = data.Items;
-    console.log("Scanned items", dataJSON);
+    res.status(200).json(dataJSON);
   } catch (err) {
     console.log("Error", err);
   }
