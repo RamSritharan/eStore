@@ -15,3 +15,9 @@ Tech Stack Used:
 - Local Storage & Session Storage
 - Docker
 - Stripe API
+
+[MainPage](/public/HomePage.png)
+[DetailPage](/public/DetailedPage.png)
+[Cart](/public/CartPage.png)
+[Stripe](/public/StripeAPI.png)
+[Orders](/public/Orders%20Page.png)
