@@ -16,8 +16,8 @@ Tech Stack Used:
 - Docker
 - Stripe API
 
-[MainPage](/public/HomePage.png)
-[DetailPage](/public/DetailedPage.png)
-[Cart](/public/CartPage.png)
-[Stripe](/public/StripeAPI.png)
-[Orders](/public/Orders%20Page.png)
+![MainPage](/public/HomePage.png)
+![DetailPage](/public/DetailedPage.png)
+![Cart](/public/CartPage.png)
+![Stripe](/public/StripeAPI.png)
+![Orders](/public/Orders%20Page.png)
